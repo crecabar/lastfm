@@ -15,9 +15,9 @@ namespace Lib;
  */
 class LastfmArtist
 {
-    public function __construct(array $params = [])
+    public function __construct($simpleXML)
     {
-        foreach ($params as $key => $value) {
+        foreach (get_object_vars($simpleXML) as $key => $value) {
             if ($this->isValidKey($key)) {
                 $this->$key = $value;
             }
@@ -31,12 +31,31 @@ class LastfmArtist
                 $key,
                 [
                     'name',
-                    'playcount',
+                    'listeners',
                     'mbid',
                     'url',
-                    'streamable'
+                    'streamable',
+                    'image'
                 ]
             );
+    }
+    
+    public function getProperty($property)
+    {
+        if($this->isValidKey($property)) {
+            return $this->$property;
+        }
+    }
+
+
+    public function getImage($position = 0)
+    {
+        return $this->image[$position];
+    }
+
+
+    public function __toString() {
+        return $this->name;
     }
     
 }

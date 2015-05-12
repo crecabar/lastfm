@@ -36,5 +36,3 @@ class Config
         }
     }
 }
-
-Config::getInstance();

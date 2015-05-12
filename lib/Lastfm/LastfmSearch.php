@@ -10,7 +10,7 @@ namespace Lib\Lastfm;
 class LastfmSearch extends \Lib\Lastfm
 {
     
-    public function __construct()
+    public function __construct(array $params = [])
     {
         $this->page_size = \Config\Config::getInstance()->lastFm['page_size'];
         $this->page = isset($params['page_number']) ? (int)$params['page_number'] : 1;
@@ -35,7 +35,7 @@ class LastfmSearch extends \Lib\Lastfm
         $xmlResult = simplexml_load_string(file_get_contents($this->buildUrl($params)));
         $this->setAttributes(reset($xmlResult->topartists->attributes()));
         foreach ($xmlResult->topartists->artist as $artist) {
-            $lastfmArtists[] = new \Lib\LastfmArtist(reset($artist->attributes()));
+            $lastfmArtists[] = new \Lib\LastfmArtist($artist);
         }
         return $lastfmArtists;
     }

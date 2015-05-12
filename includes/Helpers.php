@@ -7,6 +7,7 @@
  */
 
 namespace Includes;
+use Config\Config;
 
 /**
  * Description of Helpers
@@ -17,7 +18,7 @@ class Helpers
 {
     public static function render($template, $data = array())
     {
-        $path = __DIR__ . '/../views/' . $template . '.php';
+        $path = __DIR__ . Config::getInstance()->views['path'] . $template . '.php';
         if (file_exists($path)) {
             extract($data);
             require($path);
