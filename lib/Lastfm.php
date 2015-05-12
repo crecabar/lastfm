@@ -24,8 +24,8 @@ abstract class Lastfm
     {
         $params['method'] = $this->method;
         $params['api_key'] = $this->key;
-        $params['format'] = $this->format;
-        return $this->baseUrl . http_build_query($params);
+        //$params['format'] = $this->format;
+        return $this->baseUrl. '?' . http_build_query($params);
     }
     
     abstract public function run($params = null);

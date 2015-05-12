@@ -5,8 +5,10 @@ use Config\Config;
 use Lib\Lastfm;
 
 if(!empty($keyword = filter_input(INPUT_GET, 'keyword'))){
-    $lastFm = new Lastfm\LastfmSearch();
-    echo 'Some words about';
+    $page = filter_input(INPUT_GET, 'page', FILTER_VALIDATE_INT) ? : 0;
+    $lastFm = new Lastfm\LastfmSearch(['page_number' => $page]);
+    \Includes\Helpers::render('templates/search-form');
+    \Includes\Helpers::render('template', ['artists' => $lastFm->run($keyword)]);
 } else {
-    echo 'Some other words';
+    \Includes\Helpers::render('templates/search-form');
 }
