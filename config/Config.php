@@ -6,7 +6,8 @@ class Config
 {
     private static $instance = null;
     
-    private function __construct() {
+    private function __construct()
+    {
         require_once 'Psr4AutoloaderClass.php';
         $this->loader = new Psr4AutoloaderClass();
         $this->loader->register();
@@ -35,3 +36,5 @@ class Config
         }
     }
 }
+
+Config::getInstance();
