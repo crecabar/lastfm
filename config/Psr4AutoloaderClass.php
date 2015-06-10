@@ -20,7 +20,7 @@ class Psr4AutoloaderClass
 
     /**
      * Register loader with SPL autoloader stack.
-     * 
+     *
      * @return void
      */
     public function register()
@@ -31,12 +31,12 @@ class Psr4AutoloaderClass
     /**
      * Adds a base directory for a namespace prefix.
      *
-     * @param string $prefix The namespace prefix.
-     * @param string $base_dir A base directory for class files in the
+     * @param  string $prefix   The namespace prefix.
+     * @param  string $base_dir A base directory for class files in the
      * namespace.
-     * @param bool $prepend If true, prepend the base directory to the stack
-     * instead of appending it; this causes it to be searched first rather
-     * than last.
+     * @param  bool   $prepend  If true, prepend the base directory to the
+     *                          stack instead of appending it; this causes
+     *                          it to be searched first rather than last.
      * @return void
      */
     public function addNamespace($prefix, $base_dir, $prepend = false)
@@ -63,7 +63,7 @@ class Psr4AutoloaderClass
     /**
      * Loads the class file for a given class name.
      *
-     * @param string $class The fully-qualified class name.
+     * @param  string $class The fully-qualified class name.
      * @return mixed The mapped file name on success, or boolean false on
      * failure.
      */
@@ -75,7 +75,6 @@ class Psr4AutoloaderClass
         // work backwards through the namespace names of the fully-qualified
         // class name to find a mapped file name
         while (false !== $pos = strrpos($prefix, '\\')) {
-
             // retain the trailing namespace separator in the prefix
             $prefix = substr($class, 0, $pos + 1);
 
@@ -99,9 +98,9 @@ class Psr4AutoloaderClass
 
     /**
      * Load the mapped file for a namespace prefix and relative class.
-     * 
-     * @param string $prefix The namespace prefix.
-     * @param string $relative_class The relative class name.
+     *
+     * @param  string $prefix         The namespace prefix.
+     * @param  string $relative_class The relative class name.
      * @return mixed Boolean false if no mapped file can be loaded, or the
      * name of the mapped file that was loaded.
      */
@@ -114,7 +113,6 @@ class Psr4AutoloaderClass
 
         // look through base directories for this namespace prefix
         foreach ($this->prefixes[$prefix] as $base_dir) {
-
             // replace the namespace prefix with the base directory,
             // replace namespace separators with directory separators
             // in the relative class name, append with .php
@@ -135,14 +133,14 @@ class Psr4AutoloaderClass
 
     /**
      * If a file exists, require it from the file system.
-     * 
-     * @param string $file The file to require.
+     *
+     * @param  string $file The file to require.
      * @return bool True if the file exists, false if not.
      */
     protected function requireFile($file)
     {
         if (file_exists($file)) {
-            require $file;
+            include $file;
             return true;
         }
         return false;

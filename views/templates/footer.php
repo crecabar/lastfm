@@ -1,8 +1,5 @@
-<?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+<div id="footer">
+    <p>Posted by: Cristian Recabarren under GPL v2 License</p>
+    <p>Contact information: <a href="mailto:crecabar_cl@me.com">
+            crecabar_cl@me.com</a>.</p>
+</div>

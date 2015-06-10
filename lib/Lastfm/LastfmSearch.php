@@ -1,15 +1,33 @@
 <?php
+/**
+ * File LastfmSearch.php
+ *
+ * PHP version 5
+ *
+ * @category PHP
+ * @package  Lib\Lastfm
+ * @author   Cristian Recabarren <crecabar_cl@me.com>
+ * @license  https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html GPL2
+ * @link     https://bitbucket.org/crecabarren/last.fm-api-v2
+ */
 
 namespace Lib\Lastfm;
 
 /**
- * Description of LastfmSearch
+ * Class LastfmSearch
  *
- * @author crecabar
+ * @category PHP
+ * @package  Lib
+ * @author   Cristian Recabarren <crecabar_cl@me.com>
+ * @license  https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html GPL2
+ * @link     https://bitbucket.org/crecabarren/last.fm-api-v2
  */
 class LastfmSearch extends \Lib\Lastfm
 {
-    
+
+    /**
+     * @param array $params
+     */
     public function __construct(array $params = [])
     {
         $this->page_size = \Config\Config::getInstance()->lastFm['page_size'];
@@ -17,18 +35,24 @@ class LastfmSearch extends \Lib\Lastfm
         parent::__construct();
     }
 
-    
+    /**
+     *
+     */
     protected function setMethod()
     {
         $this->method = 'geo.gettopartists';
     }
 
+    /**
+     * @param null $query
+     * @return array
+     */
     public function run($query = null)
     {
         $keyword = filter_var($query, FILTER_SANITIZE_MAGIC_QUOTES);
         $params = [
-            'country' => $keyword, 
-            'limit' => $this->page_size, 
+            'country' => $keyword,
+            'limit' => $this->page_size,
             'page' => $this->page
         ];
         $lastfmArtists = [];
@@ -39,21 +63,31 @@ class LastfmSearch extends \Lib\Lastfm
         }
         return $lastfmArtists;
     }
-    
+
+    /**
+     * @param array $attributes
+     */
     private function setAttributes(array $attributes = [])
     {
-        foreach($attributes as $attr => $value) {
+        foreach ($attributes as $attr => $value) {
             if ($this->isValidAttr($attr)) {
                 $this->$attr = $value;
             }
         }
     }
-    
+
+    /**
+     * @param string $attr
+     * @return bool
+     */
     private function isValidAttr($attr)
     {
         return in_array($attr, ['page', 'pages', 'perpage', 'total']);
     }
-    
+
+    /**
+     * @return array
+     */
     public function getPaginationData()
     {
         return [
@@ -63,5 +97,4 @@ class LastfmSearch extends \Lib\Lastfm
             'total' => $this->$total
         ];
     }
-
 }

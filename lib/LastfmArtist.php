@@ -1,21 +1,34 @@
 <?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * File LastfmArtist.php
+ *
+ * PHP version 5
+ *
+ * @category PHP
+ * @package  Lib
+ * @author   Cristian Recabarren <crecabar_cl@me.com>
+ * @license  https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html GPL2
+ * @link     https://bitbucket.org/crecabarren/last.fm-api-v2
  */
 
 namespace Lib;
 
 /**
- * Description of LastfmArtist
+ * Class LastfmArtist
  *
- * @author crecabar
+ * @category PHP
+ * @package  Lib
+ * @author   Cristian Recabarren <crecabar_cl@me.com>
+ * @license  https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html GPL2
+ * @link     https://bitbucket.org/crecabarren/last.fm-api-v2
  */
 class LastfmArtist
 {
-    public function __construct($simpleXML)
+
+    /**
+     * @param \SimpleXMLElement $simpleXML
+     */
+    public function __construct(\SimpleXMLElement $simpleXML)
     {
         foreach (get_object_vars($simpleXML) as $key => $value) {
             if ($this->isValidKey($key)) {
@@ -23,7 +36,11 @@ class LastfmArtist
             }
         }
     }
-    
+
+    /**
+     * @param  $key
+     * @return bool
+     */
     public function isValidKey($key)
     {
         return
@@ -39,23 +56,32 @@ class LastfmArtist
                 ]
             );
     }
-    
+
+    /**
+     * @param  string $property
+     * @return mixed
+     */
     public function getProperty($property)
     {
-        if($this->isValidKey($property)) {
+        if ($this->isValidKey($property)) {
             return $this->$property;
         }
     }
 
-
+    /**
+     * @param  int   $position
+     * @return mixed
+     */
     public function getImage($position = 0)
     {
         return $this->image[$position];
     }
 
-
-    public function __toString() {
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
         return $this->name;
     }
-    
 }
