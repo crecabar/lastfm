@@ -1,4 +1,5 @@
 <div id="artistList">
+    <h3>Most popular artist in <?= $country ?></h3>
     <ul>
     <?php foreach ($artists as $artist): ?>
         <li>

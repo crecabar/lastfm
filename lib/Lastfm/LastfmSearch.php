@@ -8,7 +8,7 @@
  * @package  Lib\Lastfm
  * @author   Cristian Recabarren <crecabar_cl@me.com>
  * @license  https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html GPL2
- * @link     https://bitbucket.org/crecabarren/last.fm-api-v2
+ * @link     https://github.com/crecabar/lastfm
  */
 
 namespace Lib\Lastfm;
@@ -20,7 +20,7 @@ namespace Lib\Lastfm;
  * @package  Lib
  * @author   Cristian Recabarren <crecabar_cl@me.com>
  * @license  https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html GPL2
- * @link     https://bitbucket.org/crecabarren/last.fm-api-v2
+ * @link     https://github.com/crecabar/lastfm
  */
 class LastfmSearch extends \Lib\Lastfm
 {

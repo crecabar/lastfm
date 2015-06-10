@@ -1,4 +1,16 @@
 <?php
+/**
+ * File index.php
+ *
+ * PHP version 5
+ *
+ * @category PHP
+ * @package  none
+ * @author   Cristian Recabarren <crecabar_cl@me.com>
+ * @license  https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html GPL2
+ * @link     https://github.com/crecabar/lastfm
+ */
+
 require_once __DIR__ . '/../config/Config.php';
 use Config\Config;
 use Lib\Lastfm;
@@ -14,7 +26,10 @@ $keyword = filter_input(INPUT_GET, 'keyword');  // PHP 5.4.40 claims against to 
 if (!empty($keyword)) {
     $page = filter_input(INPUT_GET, 'page', FILTER_VALIDATE_INT) ? : 0; //TODO: add pager management.
     $lastFm = new Lastfm\LastfmSearch(['page_number' => $page]);
-    $content .= \Includes\Helpers::render('templates/list', ['artists' => $lastFm->run($keyword)]);
+    $content .= \Includes\Helpers::render(
+        'templates/list',
+        ['artists' => $lastFm->run($keyword), 'country' => $keyword]
+    );
 }
 
 $content .= \Includes\Helpers::render('templates/footer');
