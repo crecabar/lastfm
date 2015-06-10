@@ -1,6 +1,6 @@
 <?php
 /**
- * File Pagert.php
+ * File LastfmTrack.php
  *
  * PHP version 5
  *
@@ -13,10 +13,9 @@
 
 namespace Lib;
 
+
 /**
- * Class Pager
- *
- * PHP version 5
+ * Class LastfmTrack
  *
  * @category PHP
  * @package  Lib
@@ -24,6 +23,6 @@ namespace Lib;
  * @license  https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html GPL2
  * @link     https://github.com/crecabar/lastfm
  */
-class Pager {
+class LastfmTrack {
 
 }

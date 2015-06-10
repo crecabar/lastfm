@@ -1,4 +1,15 @@
 <?php
+/**
+ * File Psr4AutoloaderClass.php
+ *
+ * PHP version 5
+ *
+ * @category PHP
+ * @package  Config
+ * @author   Cristian Recabarren <crecabar_cl@me.com>
+ * @license  https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html GPL2
+ * @link     https://github.com/crecabar/lastfm
+ */
 
 namespace Config;
 
@@ -45,6 +56,18 @@ namespace Config;
  *
  *      <?php
  *      new \Foo\Bar\Qux\QuuxTest;
+ */
+
+/**
+ * Class Psr4AutoloaderClass
+ *
+ * PHP version 5
+ *
+ * @category PHP
+ * @package  Config
+ * @author   Cristian Recabarren <crecabar_cl@me.com>
+ * @license  https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html GPL2
+ * @link     https://github.com/crecabar/lastfm
  */
 class Psr4AutoloaderClass
 {
