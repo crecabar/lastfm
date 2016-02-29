@@ -30,8 +30,6 @@ if (!empty($keyword)) {
         'templates/list',
         ['artists' => $lastFm->run($keyword), 'country' => $keyword]
     );
-
-    print_r($lastFm);
     $paginationData = $lastFm->getPaginationData();
     $content .= \Includes\Helpers::render(
         'templates/pager',
