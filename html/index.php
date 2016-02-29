@@ -24,11 +24,22 @@ $content .= \Includes\Helpers::render('templates/search-form');
 $keyword = filter_input(INPUT_GET, 'keyword');  // PHP 5.4.40 claims against to have this sentence inside the if
                                                 // sentence, but in PHP 5.5.20 is allowed.
 if (!empty($keyword)) {
-    $page = filter_input(INPUT_GET, 'page', FILTER_VALIDATE_INT) ? : 0; //TODO: add pager management.
+    $page = filter_input(INPUT_GET, 'page', FILTER_VALIDATE_INT) ? : 1; //TODO: add pager management.
     $lastFm = new Lastfm\LastfmSearch(['page_number' => $page]);
     $content .= \Includes\Helpers::render(
         'templates/list',
         ['artists' => $lastFm->run($keyword), 'country' => $keyword]
+    );
+
+    print_r($lastFm);
+    $paginationData = $lastFm->getPaginationData();
+    $content .= \Includes\Helpers::render(
+        'templates/pager',
+        [
+            'page' => $page,
+            'totalPages' => $paginationData['totalPages'],
+            'keyword' => $keyword
+        ]
     );
 }
 

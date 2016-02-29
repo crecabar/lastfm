@@ -82,7 +82,7 @@ class LastfmSearch extends \Lib\Lastfm
      */
     private function isValidAttr($attr)
     {
-        return in_array($attr, ['page', 'pages', 'perpage', 'total']);
+        return in_array($attr, ['page', 'perPage', 'total', 'totalPages']);
     }
 
     /**
@@ -90,11 +90,12 @@ class LastfmSearch extends \Lib\Lastfm
      */
     public function getPaginationData()
     {
-        return [
-            'page' => $this->$page,
-            'pages' => $this->$pages,
-            'perpage' => $this->$perpage,
-            'total' => $this->$total
-        ];
+        $data = array(
+            'page' => $this->page,
+            'perPage' => $this->perPage,
+            'total' => $this->total,
+            'totalPages' => $this->totalPages
+        );
+        return $data;
     }
 }
