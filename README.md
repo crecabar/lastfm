@@ -20,4 +20,8 @@ Clone this repo at some place on your computer, then copy config/config.ini.exam
 </VirtualHost>
 ```
 
-## Dd
+And don't forget to add the following line to your /etc/hosts
+```
+127.0.0.1   lastfm.yourdomain
+```
+
