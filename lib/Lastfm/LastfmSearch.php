@@ -57,7 +57,8 @@ class LastfmSearch extends \Lib\Lastfm
         ];
         $lastfmArtists = [];
         $xmlResult = simplexml_load_string(file_get_contents($this->buildUrl($params)));
-        $this->setAttributes(reset($xmlResult->topartists->attributes()));
+        $attributes = $xmlResult->topartists->attributes();
+        $this->setAttributes(reset($attributes));
         foreach ($xmlResult->topartists->artist as $artist) {
             $lastfmArtists[] = new \Lib\LastfmArtist($artist);
         }
