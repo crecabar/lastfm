@@ -12,6 +12,7 @@
  */
 
 namespace Lib;
+use \Config\Config;
 
 /**
  * Class Lastfm
@@ -33,11 +34,12 @@ abstract class Lastfm
     /**
      * Constructor
      *
+     * @param Config $config
      */
-    public function __construct()
+    public function __construct(Config $config, array $params = [])
     {
-        $this->key = \Config\Config::getInstance()->lastFm['key'];
-        $this->secret = \Config\Config::getInstance()->lastFm['secret'];
+        $this->key = $config->lastFm['key'];
+        $this->secret = $config->lastFm['secret'];
         $this->format = 'xml';
         $this->setMethod();
     }//end __construct()

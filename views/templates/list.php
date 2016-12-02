@@ -1,16 +1,16 @@
 <div id="artistList">
     <h3>Most popular artist in <?= $country ?></h3>
-    <ul>
+    <table>
     <?php foreach ($artists as $artist): ?>
-        <li>
-            <div id="artistName"><?= $artist ?></div>
-            <div id="artistImage">
+        <tr>
+            <td class="artistName"><?= $artist ?></td>
+            <td class="artistImage">
                 <?= \Includes\Helpers::printLink(
                         $artist->url,
                         \Includes\Helpers::printImg($artist->getImage()),
                         array('target' => '_blank'))?>
-            </div>
-        </li>
+            </td>
+        </tr>
     <?php endforeach; ?>
-    </ul>
+    </table>
 </div>

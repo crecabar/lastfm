@@ -13,6 +13,8 @@
 
 namespace Lib\Lastfm;
 
+use \Config\Config;
+
 /**
  * Class LastfmSearch
  *
@@ -28,11 +30,11 @@ class LastfmSearch extends \Lib\Lastfm
     /**
      * @param array $params
      */
-    public function __construct(array $params = [])
+    public function __construct(Config $config, array $params = [])
     {
-        $this->page_size = \Config\Config::getInstance()->lastFm['page_size'];
+        $this->page_size = $config->lastFm['page_size'];
         $this->page = isset($params['page_number']) ? (int)$params['page_number'] : 1;
-        parent::__construct();
+        parent::__construct($config, $params);
     }
 
     /**

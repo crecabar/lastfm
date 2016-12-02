@@ -30,7 +30,7 @@ class Helpers
      */
     public static function render($template, $data = array())
     {
-        $path = __DIR__ . Config::getInstance()->views['path'] . $template . '.php';
+        $path = __DIR__ . '/' . Config::getInstance()->views['path'] . $template . '.php';
         if (file_exists($path)) {
             extract($data);
             ob_start();

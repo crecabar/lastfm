@@ -19,12 +19,12 @@ $next = $page + 1;
                         "?" . http_build_query(['keyword' => $keyword, 'page' => $prev]),
                         "<"
                     );
-                }
-                else
+                } else {
                     echo \Includes\Helpers::printLink(
                         "?" . http_build_query(['keyword' => $keyword, 'page' => 1]),
                         "<"
                     );
+                }
                 ?>
             </td>
             <td>
@@ -33,12 +33,12 @@ $next = $page + 1;
                         "?" . http_build_query(['keyword' => $keyword, 'page' => $next]),
                         ">"
                     );
-                }
-                else
+                } else {
                     echo \Includes\Helpers::printLink(
                         "?" . http_build_query(['keyword' => $keyword, 'page' => $totalPages]),
                         ">>"
                     );
+                }
                 ?>
             </td>
             <td>
