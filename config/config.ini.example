@@ -2,3 +2,5 @@
 lastFm[key]={YOUR_KEY}
 lastFm[secret]={YOUR_SECRET}
 lastFm[page_size]=5
+[views]
+views[path]=../views/
