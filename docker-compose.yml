@@ -5,6 +5,7 @@ version: "3.2"
 services:
   nginx:
     image: nginx:alpine
+    container_name: lastfm-nginx
     ports:
       - "8000:80"
     volumes:
@@ -13,7 +14,8 @@ services:
     links:
       - php
   php:
-    image: php:7-fpm
+    build: docker/php
+    container_name: lastfm-php
     volumes:
       - ./:/app
       - ./docker/php/site.ini:/usr/local/etc/php/conf.d/site.ini
